@@ -1,0 +1,5 @@
+package comics;
+
+public class Colecao {
+	private String nome;
+}

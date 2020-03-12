@@ -5,14 +5,12 @@ public class Revista {
 	private int ano;
 	private Caixa caixa;
 	private Colecao colecao;
-	private boolean emprestada;
+	private boolean statusEmprestimo;
 	
-	public Revista(int numeroEdicao, int ano, Caixa caixa, Colecao colecao) {
+	public Revista(int numeroEdicao, int ano, Caixa caixa) {
 		this.setNumeroEdicao(numeroEdicao);
 		this.setAno(ano);
 		this.setCaixa(caixa);
-		this.setColecao(colecao);
-		this.setEmprestada(false);
 	}
 	
 	//colecao
@@ -35,17 +33,5 @@ public class Revista {
 	}
 	public void setCaixa(Caixa caixa) {
 		this.caixa = caixa;
-	}
-	public Colecao getColecao() {
-		return colecao;
-	}
-	public void setColecao(Colecao colecao) {
-		this.colecao = colecao;
-	}
-	public boolean isEmprestada() {
-		return emprestada;
-	}
-	public void setEmprestada(boolean emprestada) {
-		this.emprestada = emprestada;
 	}
 }

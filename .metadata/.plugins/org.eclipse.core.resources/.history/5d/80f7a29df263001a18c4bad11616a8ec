@@ -1,0 +1,9 @@
+package comics;
+
+public class Revista {
+	private int numeroEdicao;
+	private int ano;
+	Caixa caixa;
+	//colecao
+	//status emprestimo
+}
