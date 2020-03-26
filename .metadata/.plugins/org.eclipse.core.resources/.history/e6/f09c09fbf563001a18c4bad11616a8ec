@@ -1,8 +1,0 @@
-package comics;
-
-public class Caixa {
-	private int numero;
-	private String identificacaoEtiqueta;
-	private String cor;
-	
-}

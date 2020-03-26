@@ -1,0 +1,40 @@
+package comics;
+
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Colecao {
+	private String nome;
+	ArrayList<Colecao> colecao = new ArrayList<Colecao>();
+	
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public void cadastraColecao() throws ParseException {
+		Colecao c = new Colecao();
+		Scanner teclado = new Scanner(System.in);
+		System.out.println("Informe o nome da Coleção: \n");
+		this.setNome(teclado.nextLine());
+		System.out.println("Coleção adicionada com Suceso! \n");
+		System.out.println("\n \n \n \n");
+		colecao.add(c);
+	}
+	public void imprimeColecoes() {
+		System.out.println("***** Coleções cadastradas ***** ");
+		for (Colecao n : colecao) {
+			System.out.println(n);
+		}
+		/*
+		for (int i = 0; i < colecao.size(); i++ ) {
+			System.out.println(colecao.get(i).toString());
+		}*/
+	}
+}
+	
+

@@ -1,0 +1,13 @@
+package comics;
+
+public class ComicControl {
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}
+
+//Para exibições utilizar um for para percorrer o array
+//A cada cadastrar criamos um novo objeto 

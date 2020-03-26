@@ -1,0 +1,25 @@
+package comics;
+
+import java.text.ParseException;
+import java.util.Scanner;
+
+public class Colecao {
+	private String nome;
+	
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public void cadastraColecao() throws ParseException {
+		Scanner teclado = new Scanner(System.in);
+		System.out.println("Informe o nome da Coleção: \n");
+		this.setNome(teclado.nextLine());
+		System.out.println("Coleção adicionada com Suceso! \n");
+	}
+}
+	
+
