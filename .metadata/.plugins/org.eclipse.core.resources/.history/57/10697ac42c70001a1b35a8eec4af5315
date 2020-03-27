@@ -57,7 +57,7 @@ public class Revista {
 		comic.setNumeroEdicao(teclado.nextInt());
 		System.out.println("Ano - YYYY:");
 		comic.setAno(teclado.nextInt());
-		box.listarCaixas();
+		System.out.println("***** Caixas Disponíveis ***** \n");
 		System.out.println("Informe o número da caixa desejada: ");
 		int codCaixa = (teclado.nextInt());
 		comic.setCaixa(box.caixa.get(codCaixa));
