@@ -1,0 +1,167 @@
+package comics;
+
+import java.io.IOException;
+import java.text.ParseException;
+import java.util.Scanner;
+
+
+public class ComicControl {
+	public static void mensagemPadrao() {
+		System.out.println("\n");
+		System.out.println("Pressione Enter para Continuar");
+	}
+
+	public static void main(String[] args) throws ParseException, IOException {
+		Colecao colection = new Colecao();
+		Caixa box = new Caixa();
+		Revista revista = new Revista();
+		Amigo amigo = new Amigo();
+		Emprestimo emprestimo = new Emprestimo();		
+		
+		Scanner teclado = new Scanner(System.in);
+		int opcao = 5;
+		while (opcao != 0 ) {
+			System.out.println("******************************************");
+			System.out.println("*********** Comics Control ***************");
+			System.out.println("------------------------------------------");
+			System.out.println("Escolha uma opção para Continuar \n");
+			System.out.println("1 - Cadastros \n");
+			System.out.println("2 - Emprestimos \n");
+			System.out.println("3 - Consultas \n");
+			System.out.println("0 - Sair \n");
+			opcao = teclado.nextInt();
+			teclado.nextLine();
+		
+		switch (opcao) {
+		case 1:
+				int selecao = 1;
+				while (selecao != 0 ) {
+					System.out.println("******************************************");
+					System.out.println("*********** Menu de Cadastros ************");
+					System.out.println("------------------------------------------");
+					System.out.println("Escolha a opção desejada: \n");
+					System.out.println("1 - Criar Coleção \n");
+					System.out.println("2 - Nova Caixa \n");
+					System.out.println("3 - Incluir Revista \n");
+					System.out.println("4 - Cadastrar Amigo \n");
+					System.out.println("0 - Voltar ao Menu Anterior \n");
+					selecao = teclado.nextInt();
+					teclado.nextLine();
+
+				switch (selecao) {
+				case 1:
+					System.out.println("**** Nova Coleção **** \n");
+					colection.cadastraColecao();
+					mensagemPadrao();
+					System.in.read();
+					break;
+				case 2:
+					System.out.println("Nova Caixa");
+					break;
+				case 3:
+					System.out.println("Nova Revista");
+					break;
+				case 4:
+					System.out.println("Novo Amigo");
+					break;
+				case 0:
+					break;
+				default:
+					System.out.println("Opção inválida, tente novamente \n");
+					break;
+				}
+			}
+			break;
+		case 2:
+				selecao = 1;
+				while (selecao != 0 ) {
+					System.out.println("******************************************");
+					System.out.println("*********** Menu de Empréstimos **********");
+					System.out.println("------------------------------------------");
+					System.out.println("Escolha a opção desejada: \n");
+					System.out.println("1 - Novo Empréstimo \n");
+					System.out.println("2 - Consultar Empréstimo \n");
+					System.out.println("3 - Incluir Revista \n");
+					System.out.println("0 - Voltar ao Menu Anterior \n");
+					selecao = teclado.nextInt();
+					teclado.nextLine();
+				
+				switch (selecao) {
+				case 1:
+					System.out.println("Novo Empréstimo");
+					break;
+				case 2:
+					System.out.println("Consultar Empréstimo");
+					break;
+				case 3:
+					System.out.println("Registrar Devolução");
+					break;
+				case 0:
+					break;
+				default:
+					System.out.println("Opção inválida, tente novamente \n");
+					break;
+				}
+			}
+			break;
+		case 3:
+			selecao = 1;
+			while (selecao != 0 ) {
+				System.out.println("******************************************");
+				System.out.println("*********** Menu de Consultas ************");
+				System.out.println("------------------------------------------");
+				System.out.println("Escolha a consulta desejada: \n");
+				System.out.println("1 - Coleções Disponíveis \n");
+				System.out.println("2 - Revistas \n");
+				System.out.println("3 - Amigos \n");
+				System.out.println("0 - Voltar ao Menu Anterior \n");
+				selecao = teclado.nextInt();
+				teclado.nextLine();
+			
+			switch (selecao) {
+			case 1:
+				colection.imprimeColecoes();
+				mensagemPadrao();
+				System.in.read();
+				break;
+			case 2:
+				System.out.println("Revistas");
+				break;
+			case 3:
+				System.out.println("Amigos");
+				break;
+			case 0:
+				break;
+			default:
+				System.out.println("Opção inválida, tente novamente \n");
+				break;
+			}
+			}
+			break;
+			
+		case 0:
+			System.out.println("\n \n Obrigado Por Utilizar o Comics Control '_' ! ");
+			break;
+		default:
+			System.out.println("Opção inválida, tente novamente \n");
+			break;
+			}
+		} teclado.close();
+	} 
+	
+	
+	
+	
+}
+/*
+
+criar novo array em cada classe (inserir no array cada novo objeto)
+*/
+
+
+//Para exibições utilizar um foreach para percorrer o array
+//A cada cadastrar criamos um novo objeto da classe
+//chamamos o método cadastrar 
+//incrmentamos o contador (verificar a utilização em arraylist
+//verificar se devemos fazer um add pro arraylist ou apenas incrementar o contador
+

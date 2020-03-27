@@ -1,15 +1,15 @@
 package comics;
 
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Caixa {
 	private int numero;
 	private String identificacaoEtiqueta;
 	private String cor;
+	ArrayList<Caixa> caixa = new ArrayList<Caixa>();
 	
-	public Caixa(int numero, String identificacaoEtiqueta, String cor) {
-		this.setNumero(numero);
-		this.setIdentificacaoEtiqueta(identificacaoEtiqueta);
-		this.setCor(cor);
-	}
 	public int getNumero() {
 		return numero;
 	}
@@ -29,4 +29,31 @@ public class Caixa {
 		this.cor = cor;
 	}
 	
-}
+	@Override
+	public String toString() {
+		return ("Caixa número: " + numero + "\n Etiqueta de Identificação: " + this.getIdentificacaoEtiqueta() + "\n Cor: " + this.getCor());			
+	}
+		
+	public void cadastraCaixa() throws ParseException {
+		Caixa box = new Caixa();
+		numero ++;
+		Scanner teclado = new Scanner(System.in);
+		System.out.println("Caixa número: " + numero);
+		box.setNumero(numero);
+		System.out.println("Informe a etiqueta de Identificação:");
+		box.setIdentificacaoEtiqueta(teclado.nextLine());
+		System.out.println("Informe a cor da caixa:");
+		box.setCor(teclado.nextLine());
+		caixa.add(box);
+		System.out.println("\n");
+		System.out.println("Caixa adicionada com Suceso! ");
+	}
+	public void listarCaixas() {
+		System.out.println("***** Caixas Disponíveis ***** \n");
+		for (Caixa imprime : caixa) {
+			System.out.println(imprime);
+			System.out.println("--------------------");
+		}
+		System.out.println("\n");
+	}
+	}

@@ -1,0 +1,84 @@
+package comics;
+
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Revista {
+	private int numeroEdicao;
+	private int ano;
+	private Caixa caixa;
+	private Colecao colecao;
+	private boolean emprestada;
+	ArrayList<Revista> revista = new ArrayList<Revista>();
+	Caixa box = new Caixa();
+	Colecao colection = new Colecao();
+	
+	public int getNumeroEdicao() {
+		return numeroEdicao;
+	}
+	public void setNumeroEdicao(int numeroEdicao) {
+		this.numeroEdicao = numeroEdicao;
+	}
+	public int getAno() {
+		return ano;
+	}
+	public void setAno(int ano) {
+		this.ano = ano;
+	}
+	public Caixa getCaixa() {
+		return caixa;
+	}
+	public void setCaixa(Caixa caixa) {
+		this.caixa = caixa;
+	}
+	public Colecao getColecao() {
+		return colecao;
+	}
+	public void setColecao(Colecao colecao) {
+		this.colecao = colecao;
+	}
+	public boolean isEmprestada() {
+		return emprestada;
+	}
+	public void setEmprestada(boolean emprestada) {
+		this.emprestada = emprestada;
+	}
+	
+	public void cadastraRevista() throws ParseException {
+		Revista comic = new Revista();
+		Scanner teclado = new Scanner(System.in);
+		System.out.println("Informe o Número da Edição:");
+		comic.setNumeroEdicao(teclado.nextInt());
+		System.out.println("Ano - YY:");
+		comic.setAno(teclado.nextInt());
+		box.listarCaixas();
+		System.out.println("Informe o número da caixa desejada: ");
+		int codCaixa = (teclado.nextInt());
+		comic.setCaixa(box.caixa.get(codCaixa));
+		colection.imprimeColecoes();
+		System.out.println("Informe o nome da Coleção: ");
+		for (int i = 0; i < colection.colecao.size(); i++) {
+			if(colection.colecao.get(i).getNome().equals(teclado.nextLine())) {
+				comic.setColecao(colection.colecao.get(i));
+			}
+		}
+		System.out.println("\n");
+		revista.add(comic);
+		System.out.println("Revista cadastrada com Suceso! ");
+	}
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

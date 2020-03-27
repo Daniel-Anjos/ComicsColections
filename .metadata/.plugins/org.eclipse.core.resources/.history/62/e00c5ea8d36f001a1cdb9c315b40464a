@@ -1,0 +1,54 @@
+package comics;
+
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Amigo {
+	
+	private String nome;
+	private String telefone;
+	private String localAmigo;
+	private boolean emprestimoAtivo;
+	ArrayList<Amigo> amigo = new ArrayList<Amigo>();
+	
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public String getTelefone() {
+		return telefone;
+	}
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+	public String getLocalAmigo() {
+		return localAmigo;
+	}
+	public void setLocalAmigo(String localAmigo) {
+		this.localAmigo = localAmigo;
+	}
+	public boolean getEmprestimoAtivo() {
+		return emprestimoAtivo;
+	}
+	public void setEmprestimoAtivo(boolean emprestimoAtivo) {
+		this.emprestimoAtivo = emprestimoAtivo;
+	}
+	
+	public void cadastraAmigo() throws ParseException {
+		Amigo amigo = new Amigo();
+		Scanner teclado = new Scanner(System.in);
+		System.out.println("Informe o Nome: \n");
+		amigo.setNome(teclado.nextLine());
+		System.out.println("Telefone - (DD)XXXX-XXXX : \n");
+		amigo.setTelefone(teclado.nextLine());
+		System.out.println("Local/Departamento: \n");
+		amigo.setLocalAmigo(teclado.nextLine());
+		amigo.setEmprestimoAtivo(false);
+		System.out.println("\n");
+		
+		System.out.println("Amigo(a) cadastrado com Suceso! \n");
+	}
+}

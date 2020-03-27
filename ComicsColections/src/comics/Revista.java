@@ -1,22 +1,18 @@
 package comics;
 
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Revista {
 	private int numeroEdicao;
 	private int ano;
 	private Caixa caixa;
 	private Colecao colecao;
 	private boolean emprestada;
-	
-	public Revista(int numeroEdicao, int ano, Caixa caixa, Colecao colecao) {
-		this.setNumeroEdicao(numeroEdicao);
-		this.setAno(ano);
-		this.setCaixa(caixa);
-		this.setColecao(colecao);
-		this.setEmprestada(false);
-	}
-	
-	//colecao
-	//status emprestimo
+	ArrayList<Revista> revista = new ArrayList<Revista>();
+	Caixa box = new Caixa();
+	Colecao colection = new Colecao();
 	
 	public int getNumeroEdicao() {
 		return numeroEdicao;
@@ -42,10 +38,63 @@ public class Revista {
 	public void setColecao(Colecao colecao) {
 		this.colecao = colecao;
 	}
-	public boolean isEmprestada() {
+	public boolean getEmprestada() {
 		return emprestada;
 	}
 	public void setEmprestada(boolean emprestada) {
 		this.emprestada = emprestada;
 	}
+	@Override
+	public String toString() {
+		return ("Edição: " + this.getNumeroEdicao() + "\n Ano: " + this.getAno() + "\n Caixa: " + this.getCaixa() +
+				"\n Coleção: " + this.getColecao() + "\n Emprestada? " + this.getEmprestada());
+	}
+	
+	public void cadastraRevista() throws ParseException {
+		Revista comic = new Revista();
+		Scanner teclado = new Scanner(System.in);
+		System.out.println("Informe o Número da Edição:");
+		comic.setNumeroEdicao(teclado.nextInt());
+		System.out.println("Ano - YYYY:");
+		comic.setAno(teclado.nextInt());
+		System.out.println("***** Caixas Disponíveis ***** \n");
+		System.out.println("Informe o número da caixa desejada: ");
+		int codCaixa = (teclado.nextInt());
+		comic.setCaixa(box.caixa.get(codCaixa));
+		colection.imprimeColecoes();
+		System.out.println("Informe o nome da Coleção: ");
+		for (int i = 0; i < colection.colecao.size(); i++) {
+			if(colection.colecao.get(i).getNome().equals(teclado.nextLine())) {
+				comic.setColecao(colection.colecao.get(i));
+			}
+		}
+		comic.setEmprestada(false);
+		System.out.println("\n");
+		revista.add(comic);
+		System.out.println("Revista cadastrada com Suceso! ");
+	}
+	
+	public void listarRevistas() {
+		System.out.println("***** Catálogo de Revistas ***** \n");
+		for (Revista imprime : revista) {
+			System.out.println(imprime);
+			System.out.println("--------------------");
+		}
+		System.out.println("\n");
+	}
+	
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

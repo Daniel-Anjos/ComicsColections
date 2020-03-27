@@ -22,13 +22,14 @@ public class Colecao {
 	}
 
 	public void cadastraColecao() throws ParseException {
-		Colecao c = new Colecao();
+		Colecao colection = new Colecao();
 		Scanner teclado = new Scanner(System.in);
-		System.out.println("Informe o nome da Coleção: \n");
-		c.setNome(teclado.nextLine());
-		colecao.add(c);
+		System.out.println("Informe o nome da Coleção:");
+		colection.setNome(teclado.nextLine());
+		colecao.add(colection);
 		System.out.println("\n");
-		System.out.println("Coleção adicionada com Suceso! \n");
+		System.out.println("Coleção adicionada com Suceso! ");
+		
 	}
 	public void imprimeColecoes() {
 		System.out.println("\n");
