@@ -9,11 +9,9 @@ import java.util.Scanner;
 public class Emprestimo {
 	private LocalDate dataEmprestimo;
 	private LocalDate dataDevolucao;
-	private Revista comic;
-	private Amigo friend;
+	private Revista revista;
+	private Amigo amigo;
 	ArrayList<Emprestimo> emprestimo = new ArrayList<Emprestimo>();
-	Revista revista;
-	Amigo amigo;
 	
 	public LocalDate getDataEmprestimo() {
 		dataEmprestimo = LocalDate.now();
@@ -28,17 +26,17 @@ public class Emprestimo {
 	public void setDataDevolucao(LocalDate dataDevolucao) {
 		this.dataDevolucao = dataDevolucao;
 	}
-	public Revista getComic() {
-		return comic;
+	public Revista getRevista() {
+		return revista;
 	}
-	public void setComic(Revista comic) {
-		this.comic = comic;
+	public void setRevista(Revista revista) {
+		this.revista = revista;
 	}
-	public Amigo getFriend() {
-		return friend;
+	public Amigo getAmigo() {
+		return amigo;
 	}
-	public void setFriend(Amigo friend) {
-		this.friend = friend;
+	public void setAmigo(Amigo amigo) {
+		this.amigo = amigo;
 	}
 	
 	//@Override

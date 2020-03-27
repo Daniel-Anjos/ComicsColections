@@ -11,8 +11,8 @@ public class Revista {
 	private Colecao colecao;
 	private boolean emprestada;
 	ArrayList<Revista> revista = new ArrayList<Revista>();
-	Caixa box;
-	Colecao colection;
+	Caixa box = new Caixa();
+	Colecao colection = new Colecao();
 	
 	public int getNumeroEdicao() {
 		return numeroEdicao;
@@ -57,10 +57,10 @@ public class Revista {
 		comic.setNumeroEdicao(teclado.nextInt());
 		System.out.println("Ano - YYYY:");
 		comic.setAno(teclado.nextInt());
-		box.listarCaixas();
-		System.out.println("Informe o número da caixa desejada: ");
-		int codCaixa = (teclado.nextInt());
-		comic.setCaixa(box.caixa.get(codCaixa));
+		//box.listarCaixas();
+		//System.out.println("Informe o número da caixa desejada: ");
+		//int codCaixa = (teclado.nextInt());
+		//comic.setCaixa(box.caixa.get(codCaixa));
 		colection.imprimeColecoes();
 		System.out.println("Informe o nome da Coleção: ");
 		for (int i = 0; i < colection.colecao.size(); i++) {

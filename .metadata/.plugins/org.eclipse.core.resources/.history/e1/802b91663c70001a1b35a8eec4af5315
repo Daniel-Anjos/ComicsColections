@@ -11,8 +11,7 @@ public class Revista {
 	private Colecao colecao;
 	private boolean emprestada;
 	ArrayList<Revista> revista = new ArrayList<Revista>();
-	Caixa box;
-	Colecao colection;
+	
 	
 	public int getNumeroEdicao() {
 		return numeroEdicao;
