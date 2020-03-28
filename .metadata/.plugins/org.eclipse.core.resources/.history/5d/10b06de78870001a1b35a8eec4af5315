@@ -49,8 +49,7 @@ public class Caixa {
 		System.out.println("Caixa adicionada com Suceso! ");
 	}
 	public void listarCaixas() {
-		System.out.println("***** Caixas Disponíveis ***** ");
-		System.out.println("--------------------");
+		System.out.println("***** Caixas Disponíveis ***** \n");
 		for (Caixa imprime : caixa) {
 			System.out.println(imprime);
 			System.out.println("--------------------");

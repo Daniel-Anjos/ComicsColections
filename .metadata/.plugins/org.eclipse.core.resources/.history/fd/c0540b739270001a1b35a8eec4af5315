@@ -1,6 +1,5 @@
 package comics;
 
-import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -63,9 +62,8 @@ public class Revista {
 		comic.setCaixa(caixa.caixa.get(codCaixa - 1));
 		colecao.imprimeColecoes();
 		System.out.println("Informe o nome da Coleção: ");
-		String nomeColecao = (teclado.nextLine());	
-		System.out.println(nomeColecao);
-	
+		String nomeColecao = (teclado.next());
+		System.in.read();
 		/*for (int i = 0; i < colecao.colecao.size(); i++) {
 			if(colecao.colecao.get(i).getNome().equals(nomeColecao)) {
 				comic.setColecao(colecao.colecao.get(i));

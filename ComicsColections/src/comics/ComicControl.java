@@ -63,7 +63,7 @@ public class ComicControl {
 					break;
 				case 3:
 					System.out.println("******* Cadastrar Revista **********");
-					revista.cadastraRevista();
+					revista.cadastraRevista(box, colection);
 					break;
 				case 4:
 					System.out.println("******** Incluir Amigo(a) *********");

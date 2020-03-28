@@ -9,7 +9,7 @@ public class Caixa {
 	private String identificacaoEtiqueta;
 	private String cor;
 	ArrayList<Caixa> caixa = new ArrayList<Caixa>();
-	
+	Caixa box;
 	public int getNumero() {
 		return numero;
 	}
@@ -35,7 +35,6 @@ public class Caixa {
 	}
 		
 	public void cadastraCaixa() throws ParseException {
-		Caixa box = new Caixa();
 		numero ++;
 		Scanner teclado = new Scanner(System.in);
 		System.out.println("Caixa número: " + numero);
@@ -49,8 +48,7 @@ public class Caixa {
 		System.out.println("Caixa adicionada com Suceso! ");
 	}
 	public void listarCaixas() {
-		System.out.println("***** Caixas Disponíveis ***** ");
-		System.out.println("--------------------");
+		System.out.println("***** Caixas Disponíveis ***** \n");
 		for (Caixa imprime : caixa) {
 			System.out.println(imprime);
 			System.out.println("--------------------");

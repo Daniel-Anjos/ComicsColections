@@ -30,14 +30,11 @@ public class Colecao {
 		System.out.println("\n");
 		System.out.println("Coleção adicionada com Suceso! ");
 	}
-	
 	public void imprimeColecoes() {
 		System.out.println("\n");
 		System.out.println("***** Coleções cadastradas ***** ");
-		System.out.println("--------------------");
 		for (Colecao imprime : colecao) {
 			System.out.println(imprime);
-			System.out.println("--------------------");
 		}
 		System.out.println("\n");
 	}
