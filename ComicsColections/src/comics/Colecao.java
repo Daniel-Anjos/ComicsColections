@@ -21,8 +21,8 @@ public class Colecao {
 		return this.getNome();
 	}
 
-	public void cadastraColecao() throws ParseException {
-		Colecao colection = new Colecao();
+	public void cadastraColecao(Colecao colection) throws ParseException {
+		colection = new Colecao();
 		Scanner teclado = new Scanner(System.in);
 		System.out.println("Informe o nome da Coleção:");
 		colection.setNome(teclado.nextLine());
@@ -31,11 +31,11 @@ public class Colecao {
 		System.out.println("Coleção adicionada com Suceso! ");
 	}
 	
-	public void imprimeColecoes() {
+	public void imprimeColecoes(Colecao colection) {
 		System.out.println("\n");
 		System.out.println("***** Coleções cadastradas ***** ");
 		System.out.println("--------------------");
-		for (Colecao imprime : colecao) {
+		for(Colecao imprime : colecao) {
 			System.out.println(imprime);
 			System.out.println("--------------------");
 		}

@@ -43,8 +43,8 @@ public class Amigo {
 	}
 	
 	
-	public void cadastraAmigo() throws ParseException {
-		Amigo amigo = new Amigo();
+	public void cadastraAmigo(Amigo amigo) throws ParseException {
+		amigo = new Amigo();
 		Scanner teclado = new Scanner(System.in);
 		System.out.println("Informe o Nome:");
 		amigo.setNome(teclado.nextLine());

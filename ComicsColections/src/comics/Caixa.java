@@ -5,16 +5,16 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Caixa {
-	private int numero;
+	private int numeroCaixa;
 	private String identificacaoEtiqueta;
 	private String cor;
 	ArrayList<Caixa> caixa = new ArrayList<Caixa>();
 	
-	public int getNumero() {
-		return numero;
+	public int getNumeroCaixa() {
+		return numeroCaixa;
 	}
-	public void setNumero(int numero) {
-		this.numero = numero;
+	public void setNumeroCaixa(int numeroCaixa) {
+		this.numeroCaixa = numeroCaixa;
 	}
 	public String getIdentificacaoEtiqueta() {
 		return identificacaoEtiqueta;
@@ -31,15 +31,15 @@ public class Caixa {
 	
 	@Override
 	public String toString() {
-		return ("Caixa número: " + numero + "\n Etiqueta de Identificação: " + this.getIdentificacaoEtiqueta() + "\n Cor: " + this.getCor());			
+		return ("Caixa número: " + numeroCaixa + "\n Etiqueta de Identificação: " + this.getIdentificacaoEtiqueta() + "\n Cor: " + this.getCor());			
 	}
 		
-	public void cadastraCaixa() throws ParseException {
-		Caixa box = new Caixa();
-		numero ++;
+	public void cadastraCaixa(Caixa box) throws ParseException {
+		box = new Caixa();
+		numeroCaixa ++;
 		Scanner teclado = new Scanner(System.in);
-		System.out.println("Caixa número: " + numero);
-		box.setNumero(numero);
+		System.out.println("Caixa número: " + numeroCaixa);
+		box.setNumeroCaixa(numeroCaixa);
 		System.out.println("Informe a etiqueta de Identificação:");
 		box.setIdentificacaoEtiqueta(teclado.nextLine());
 		System.out.println("Informe a cor da caixa:");
@@ -57,4 +57,5 @@ public class Caixa {
 		}
 		System.out.println("\n");
 	}
-	}
+	
+}

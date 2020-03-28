@@ -10,13 +10,14 @@ public class ComicControl {
 		System.out.println("\n");
 		System.out.println("Pressione Enter para Continuar");
 	}
+	
 
 	public static void main(String[] args) throws ParseException, IOException {
 		Colecao colection = new Colecao();
 		Caixa box = new Caixa();
 		Revista revista = new Revista();
 		Amigo amigo = new Amigo();
-		Emprestimo emprestimo = new Emprestimo();		
+		Emprestimo loan = new Emprestimo();		
 		
 		Scanner teclado = new Scanner(System.in);
 		int opcao = 5;
@@ -51,23 +52,25 @@ public class ComicControl {
 				switch (selecao) {
 				case 1:
 					System.out.println("**** Nova Coleção ****");
-					colection.cadastraColecao();
+					colection.cadastraColecao(colection);
 					mensagemPadrao();
 					System.in.read();
 					break;
 				case 2:
 					System.out.println("******* Nova Caixa ******* ");
-					box.cadastraCaixa();
+					box.cadastraCaixa(box);
 					mensagemPadrao();
 					System.in.read();
 					break;
 				case 3:
 					System.out.println("******* Cadastrar Revista **********");
-					revista.cadastraRevista(box, colection);
+					revista.cadastraRevista(box, colection, revista);
+					mensagemPadrao();
+					System.in.read();
 					break;
 				case 4:
 					System.out.println("******** Incluir Amigo(a) *********");
-					amigo.cadastraAmigo();
+					amigo.cadastraAmigo(amigo);
 					mensagemPadrao();
 					System.in.read();
 					break;
@@ -87,24 +90,35 @@ public class ComicControl {
 					System.out.println("------------------------------------------");
 					System.out.println("Escolha a opção desejada: \n");
 					System.out.println("1 - Novo Empréstimo \n");
-					System.out.println("2 - Consultar Empréstimo \n");
-					System.out.println("3 - Incluir Revista \n");
+					System.out.println("2 - Consultar Empréstimos Ativos \n");
+					System.out.println("3 - Consultar Devolvidos \n");
+					System.out.println("4 - Registrar Devolução \n");
 					System.out.println("0 - Voltar ao Menu Anterior \n");
 					selecao = teclado.nextInt();
 					teclado.nextLine();
 				
 				switch (selecao) {
 				case 1:
-					System.out.println("******* Novo Empréstimo **********");
-					emprestimo.novoEmprestimo();
+					System.out.println("********* Novo Empréstimo **********");
+					loan.novoEmprestimo(loan, revista, amigo);
 					mensagemPadrao();
 					System.in.read();
 					break;
 				case 2:
-					System.out.println("Consultar Empréstimo");
-					break;
+					System.out.println("********** Consultar Empréstimos Ativos **********");
+					loan.emprestimosAtivos();
+					mensagemPadrao();
+					System.in.read();
 				case 3:
-					System.out.println("Registrar Devolução");
+					System.out.println("******** Consultar Empréstimos Devolvidos *********");
+					loan.emprestimosDevolvidos();
+					mensagemPadrao();
+					System.in.read();;
+				case 4:
+					System.out.println("******** Registrar Devolução ***********");
+					loan.devolucaoEmprestimo(amigo, revista, loan);
+					mensagemPadrao();
+					System.in.read();
 					break;
 				case 0:
 					break;
@@ -130,7 +144,7 @@ public class ComicControl {
 			
 			switch (selecao) {
 			case 1:
-				colection.imprimeColecoes();
+				colection.imprimeColecoes(colection);
 				mensagemPadrao();
 				System.in.read();
 				break;
@@ -167,15 +181,3 @@ public class ComicControl {
 	
 	
 }
-/*
-
-criar novo array em cada classe (inserir no array cada novo objeto)
-*/
-
-
-//Para exibições utilizar um foreach para percorrer o array
-//A cada cadastrar criamos um novo objeto da classe
-//chamamos o método cadastrar 
-//incrmentamos o contador (verificar a utilização em arraylist
-//verificar se devemos fazer um add pro arraylist ou apenas incrementar o contador
-
