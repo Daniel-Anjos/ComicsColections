@@ -10,13 +10,14 @@ public class ComicControl {
 		System.out.println("\n");
 		System.out.println("Pressione Enter para Continuar");
 	}
+	
 
 	public static void main(String[] args) throws ParseException, IOException {
 		Colecao colection = new Colecao();
 		Caixa box = new Caixa();
 		Revista revista = new Revista();
 		Amigo amigo = new Amigo();
-		Emprestimo emprestimo = new Emprestimo();		
+		Emprestimo loan = new Emprestimo();		
 		
 		Scanner teclado = new Scanner(System.in);
 		int opcao = 5;
@@ -24,7 +25,7 @@ public class ComicControl {
 			System.out.println("******************************************");
 			System.out.println("*********** Comics Control ***************");
 			System.out.println("------------------------------------------");
-			System.out.println("Escolha uma opção para Continuar \n");
+			System.out.println("Escolha uma opÃ§Ã£o para Continuar \n");
 			System.out.println("1 - Cadastros \n");
 			System.out.println("2 - Emprestimos \n");
 			System.out.println("3 - Consultas \n");
@@ -39,8 +40,8 @@ public class ComicControl {
 					System.out.println("******************************************");
 					System.out.println("*********** Menu de Cadastros ************");
 					System.out.println("------------------------------------------");
-					System.out.println("Escolha a opção desejada: \n");
-					System.out.println("1 - Criar Coleção \n");
+					System.out.println("Escolha a opÃ§Ã£o desejada: \n");
+					System.out.println("1 - Criar ColeÃ§Ã£o \n");
 					System.out.println("2 - Nova Caixa \n");
 					System.out.println("3 - Incluir Revista \n");
 					System.out.println("4 - Cadastrar Amigo(a) \n");
@@ -50,31 +51,33 @@ public class ComicControl {
 
 				switch (selecao) {
 				case 1:
-					System.out.println("**** Nova Coleção ****");
-					colection.cadastraColecao();
+					System.out.println("**** Nova ColeÃ§Ã£o ****");
+					colection.cadastraColecao(colection);
 					mensagemPadrao();
 					System.in.read();
 					break;
 				case 2:
 					System.out.println("******* Nova Caixa ******* ");
-					box.cadastraCaixa();
+					box.cadastraCaixa(box);
 					mensagemPadrao();
 					System.in.read();
 					break;
 				case 3:
 					System.out.println("******* Cadastrar Revista **********");
-					revista.cadastraRevista(box, colection);
+					revista.cadastraRevista(box, colection, revista);
+					mensagemPadrao();
+					System.in.read();
 					break;
 				case 4:
 					System.out.println("******** Incluir Amigo(a) *********");
-					amigo.cadastraAmigo();
+					amigo.cadastraAmigo(amigo);
 					mensagemPadrao();
 					System.in.read();
 					break;
 				case 0:
 					break;
 				default:
-					System.out.println("Opção inválida, tente novamente \n");
+					System.out.println("OpÃ§Ã£o invÃ¡lida, tente novamente \n");
 					break;
 				}
 			}
@@ -83,33 +86,42 @@ public class ComicControl {
 				selecao = 1;
 				while (selecao != 0 ) {
 					System.out.println("******************************************");
-					System.out.println("*********** Menu de Empréstimos **********");
+					System.out.println("*********** Menu de EmprÃ©stimos **********");
 					System.out.println("------------------------------------------");
-					System.out.println("Escolha a opção desejada: \n");
-					System.out.println("1 - Novo Empréstimo \n");
-					System.out.println("2 - Consultar Empréstimo \n");
-					System.out.println("3 - Incluir Revista \n");
+					System.out.println("Escolha a opÃ§Ã£o desejada: \n");
+					System.out.println("1 - Novo EmprÃ©stimo \n");
+					System.out.println("2 - Consultar EmprÃ©stimos Ativos \n");
+					System.out.println("3 - Consultar Devolvidos \n");
+					System.out.println("4 - Registrar DevoluÃ§Ã£o \n");
 					System.out.println("0 - Voltar ao Menu Anterior \n");
 					selecao = teclado.nextInt();
-					teclado.nextLine();
 				
 				switch (selecao) {
 				case 1:
-					System.out.println("******* Novo Empréstimo **********");
-					emprestimo.novoEmprestimo();
+					System.out.println("********* Novo EmprÃ©stimo **********");
+					loan.novoEmprestimo(loan, revista, amigo);
 					mensagemPadrao();
 					System.in.read();
 					break;
 				case 2:
-					System.out.println("Consultar Empréstimo");
-					break;
+					loan.emprestimosAtivos();
+					mensagemPadrao();
+					System.in.read();
+                                        break;
 				case 3:
-					System.out.println("Registrar Devolução");
+					loan.emprestimosDevolvidos();
+					mensagemPadrao();
+					System.in.read();
+                                        break;
+				case 4:
+					loan.devolucaoEmprestimo(amigo, revista, loan);
+					mensagemPadrao();
+					System.in.read();
 					break;
-				case 0:
+				case 0:                        
 					break;
 				default:
-					System.out.println("Opção inválida, tente novamente \n");
+					System.out.println("OpÃ§Ã£o invÃ¡lida, tente novamente \n");
 					break;
 				}
 			}
@@ -121,7 +133,7 @@ public class ComicControl {
 				System.out.println("*********** Menu de Consultas ************");
 				System.out.println("------------------------------------------");
 				System.out.println("Escolha a consulta desejada: \n");
-				System.out.println("1 - Coleções Disponíveis \n");
+				System.out.println("1 - ColeÃ§Ãµes DisponÃ­veis \n");
 				System.out.println("2 - Revistas \n");
 				System.out.println("3 - Amigos(as) \n");
 				System.out.println("0 - Voltar ao Menu Anterior \n");
@@ -130,7 +142,7 @@ public class ComicControl {
 			
 			switch (selecao) {
 			case 1:
-				colection.imprimeColecoes();
+				colection.imprimeColecoes(colection);
 				mensagemPadrao();
 				System.in.read();
 				break;
@@ -147,7 +159,7 @@ public class ComicControl {
 			case 0:
 				break;
 			default:
-				System.out.println("Opção inválida, tente novamente \n");
+				System.out.println("OpÃ§Ã£o invÃ¡lida, tente novamente \n");
 				break;
 			}
 			}
@@ -157,7 +169,7 @@ public class ComicControl {
 			System.out.println("\n \n Obrigado Por Utilizar o Comics Control '_' ! ");
 			break;
 		default:
-			System.out.println("Opção inválida, tente novamente \n");
+			System.out.println("OpÃ§Ã£o invÃ¡lida, tente novamente \n");
 			break;
 			}
 		} teclado.close();
@@ -167,15 +179,3 @@ public class ComicControl {
 	
 	
 }
-/*
-
-criar novo array em cada classe (inserir no array cada novo objeto)
-*/
-
-
-//Para exibições utilizar um foreach para percorrer o array
-//A cada cadastrar criamos um novo objeto da classe
-//chamamos o método cadastrar 
-//incrmentamos o contador (verificar a utilização em arraylist
-//verificar se devemos fazer um add pro arraylist ou apenas incrementar o contador
-

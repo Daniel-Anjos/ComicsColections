@@ -1,6 +1,5 @@
 package comics;
 
-import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -45,47 +44,49 @@ public class Revista {
 	}
 	@Override
 	public String toString() {
-		return ("Edição: " + this.getNumeroEdicao() + "\n Ano: " + this.getAno() + "\n Caixa: " + this.getCaixa().getNumero() +
-				"\n Coleção: " + this.getColecao().getNome() + "\n Emprestada? " + this.getEmprestada());
+		return ("EdiÃ§Ã£o: " + this.getNumeroEdicao() + "\n Ano: " + this.getAno() + "\n Caixa: " + this.getCaixa().getNumeroCaixa() +
+				"\n ColeÃ§Ã£o: " + this.getColecao().getNome() + "\n Emprestada? " + this.getEmprestada());
 	}
 	
-	public void cadastraRevista(Caixa caixa, Colecao colecao) throws ParseException {
-		Revista comic = new Revista();
+	public void cadastraRevista(Caixa caixa, Colecao colecao, Revista comic) throws ParseException {
+		comic = new Revista();
 		Scanner teclado = new Scanner(System.in);
-		System.out.println("Informe o Número da Edição:");
+		System.out.println("Informe o NÃºmero da EdiÃ§Ã£o:");
 		comic.setNumeroEdicao(teclado.nextInt());
 		System.out.println("Ano - YYYY:");
 		comic.setAno(teclado.nextInt());
 		System.out.println("\n");
 		caixa.listarCaixas();
-		System.out.println("Informe o número da caixa desejada: ");
+		System.out.println("Informe o nÃºmero da caixa desejada: ");
 		int codCaixa = (teclado.nextInt());
 		comic.setCaixa(caixa.caixa.get(codCaixa - 1));
-		colecao.imprimeColecoes();
-		System.out.println("Informe o nome da Coleção: ");
-		String nomeColecao = (teclado.nextLine());	
-		System.out.println(nomeColecao);
-	
-		/*for (int i = 0; i < colecao.colecao.size(); i++) {
+		clearBuffer(teclado);
+		colecao.imprimeColecoes(colecao);
+		System.out.println("Informe o nome da ColeÃ§Ã£o: ");
+		String nomeColecao = (teclado.nextLine());
+	    for (int i = 0; i < colecao.colecao.size(); i++) {
 			if(colecao.colecao.get(i).getNome().equals(nomeColecao)) {
 				comic.setColecao(colecao.colecao.get(i));
-				System.out.println(colecao.colecao.get(i).getNome());
-				System.out.println("Coleção selecionada: " + comic.getColecao() );
 			}
-		}*/
+		}
 		comic.setEmprestada(false);
 		System.out.println("\n");
 		revista.add(comic);
 		System.out.println("Revista cadastrada com Suceso! ");
 	}
 	
+	private void clearBuffer(Scanner teclado) {
+		if (teclado.hasNextLine()) {
+			teclado.nextLine();
+		}
+		
+	}
 	public void listarRevistas() {
-		System.out.println("***** Catálogo de Revistas ***** \n");
+		System.out.println("***** CatÃ¡logo de Revistas ***** \n");
 		for (Revista imprime : revista) {
 			System.out.println(imprime);
 			System.out.println("--------------------");
 		}
-		System.out.println("\n");
 	}
 	
 	

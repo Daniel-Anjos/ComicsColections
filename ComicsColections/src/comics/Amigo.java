@@ -39,12 +39,11 @@ public class Amigo {
 	@Override
 	public String toString() {
 		return ("Nome: " + this.getNome() + "\n Telefone: " + this.getTelefone() + "\n Local/Departamento: " + this.getLocalAmigo()+
-				"\n Empréstimos Ativos: " + this.getEmprestimoAtivo());
+				"\n EmprÃ©stimos Ativos: " + this.getEmprestimoAtivo());
 	}
-	
-	
-	public void cadastraAmigo() throws ParseException {
-		Amigo amigo = new Amigo();
+		
+	public void cadastraAmigo(Amigo amigo) throws ParseException {
+		amigo = new Amigo();
 		Scanner teclado = new Scanner(System.in);
 		System.out.println("Informe o Nome:");
 		amigo.setNome(teclado.nextLine());
@@ -63,6 +62,5 @@ public class Amigo {
 			System.out.println(imprime);
 			System.out.println("--------------------");
 		}
-		System.out.println("\n");
 	}
 }

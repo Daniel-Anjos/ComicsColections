@@ -1,0 +1,59 @@
+package comics;
+
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Caixa {
+	private int numeroCaixa;
+	private String identificacaoEtiqueta;
+	private String cor;
+	ArrayList<Caixa> caixa = new ArrayList<Caixa>();
+	
+	public int getNumeroCaixa() {
+		return numeroCaixa;
+	}
+	public void setNumeroCaixa(int numeroCaixa) {
+		this.numeroCaixa = numeroCaixa;
+	}
+	public String getIdentificacaoEtiqueta() {
+		return identificacaoEtiqueta;
+	}
+	public void setIdentificacaoEtiqueta(String identificacaoEtiqueta) {
+		this.identificacaoEtiqueta = identificacaoEtiqueta;
+	}
+	public String getCor() {
+		return cor;
+	}
+	public void setCor(String cor) {
+		this.cor = cor;
+	}
+	
+	@Override
+	public String toString() {
+		return ("Caixa número: " + numeroCaixa + "\n Etiqueta de Identificação: " + this.getIdentificacaoEtiqueta() + "\n Cor: " + this.getCor());			
+	}
+		
+	public void cadastraCaixa(Caixa box) throws ParseException {
+		numeroCaixa ++;
+		Scanner teclado = new Scanner(System.in);
+		System.out.println("Caixa número: " + numeroCaixa);
+		box.setNumeroCaixa(numeroCaixa);
+		System.out.println("Informe a etiqueta de Identificação:");
+		box.setIdentificacaoEtiqueta(teclado.nextLine());
+		System.out.println("Informe a cor da caixa:");
+		box.setCor(teclado.nextLine());
+		caixa.add(box);
+		System.out.println("\n");
+		System.out.println("Caixa adicionada com Suceso! ");
+	}
+	public void listarCaixas() {
+		System.out.println("***** Caixas Disponíveis ***** ");
+		System.out.println("--------------------");
+		for (Caixa imprime : caixa) {
+			System.out.println(imprime);
+			System.out.println("--------------------");
+		}
+		System.out.println("\n");
+	}
+	}
