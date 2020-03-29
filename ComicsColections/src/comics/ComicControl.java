@@ -25,7 +25,7 @@ public class ComicControl {
 			System.out.println("******************************************");
 			System.out.println("*********** Comics Control ***************");
 			System.out.println("------------------------------------------");
-			System.out.println("Escolha uma opção para Continuar \n");
+			System.out.println("Escolha uma opÃ§Ã£o para Continuar \n");
 			System.out.println("1 - Cadastros \n");
 			System.out.println("2 - Emprestimos \n");
 			System.out.println("3 - Consultas \n");
@@ -40,8 +40,8 @@ public class ComicControl {
 					System.out.println("******************************************");
 					System.out.println("*********** Menu de Cadastros ************");
 					System.out.println("------------------------------------------");
-					System.out.println("Escolha a opção desejada: \n");
-					System.out.println("1 - Criar Coleção \n");
+					System.out.println("Escolha a opÃ§Ã£o desejada: \n");
+					System.out.println("1 - Criar ColeÃ§Ã£o \n");
 					System.out.println("2 - Nova Caixa \n");
 					System.out.println("3 - Incluir Revista \n");
 					System.out.println("4 - Cadastrar Amigo(a) \n");
@@ -51,7 +51,7 @@ public class ComicControl {
 
 				switch (selecao) {
 				case 1:
-					System.out.println("**** Nova Coleção ****");
+					System.out.println("**** Nova ColeÃ§Ã£o ****");
 					colection.cadastraColecao(colection);
 					mensagemPadrao();
 					System.in.read();
@@ -77,7 +77,7 @@ public class ComicControl {
 				case 0:
 					break;
 				default:
-					System.out.println("Opção inválida, tente novamente \n");
+					System.out.println("OpÃ§Ã£o invÃ¡lida, tente novamente \n");
 					break;
 				}
 			}
@@ -86,44 +86,42 @@ public class ComicControl {
 				selecao = 1;
 				while (selecao != 0 ) {
 					System.out.println("******************************************");
-					System.out.println("*********** Menu de Empréstimos **********");
+					System.out.println("*********** Menu de EmprÃ©stimos **********");
 					System.out.println("------------------------------------------");
-					System.out.println("Escolha a opção desejada: \n");
-					System.out.println("1 - Novo Empréstimo \n");
-					System.out.println("2 - Consultar Empréstimos Ativos \n");
+					System.out.println("Escolha a opÃ§Ã£o desejada: \n");
+					System.out.println("1 - Novo EmprÃ©stimo \n");
+					System.out.println("2 - Consultar EmprÃ©stimos Ativos \n");
 					System.out.println("3 - Consultar Devolvidos \n");
-					System.out.println("4 - Registrar Devolução \n");
+					System.out.println("4 - Registrar DevoluÃ§Ã£o \n");
 					System.out.println("0 - Voltar ao Menu Anterior \n");
 					selecao = teclado.nextInt();
-					teclado.nextLine();
 				
 				switch (selecao) {
 				case 1:
-					System.out.println("********* Novo Empréstimo **********");
+					System.out.println("********* Novo EmprÃ©stimo **********");
 					loan.novoEmprestimo(loan, revista, amigo);
 					mensagemPadrao();
 					System.in.read();
 					break;
 				case 2:
-					System.out.println("********** Consultar Empréstimos Ativos **********");
 					loan.emprestimosAtivos();
 					mensagemPadrao();
 					System.in.read();
+                                        break;
 				case 3:
-					System.out.println("******** Consultar Empréstimos Devolvidos *********");
 					loan.emprestimosDevolvidos();
 					mensagemPadrao();
-					System.in.read();;
+					System.in.read();
+                                        break;
 				case 4:
-					System.out.println("******** Registrar Devolução ***********");
 					loan.devolucaoEmprestimo(amigo, revista, loan);
 					mensagemPadrao();
 					System.in.read();
 					break;
-				case 0:
+				case 0:                        
 					break;
 				default:
-					System.out.println("Opção inválida, tente novamente \n");
+					System.out.println("OpÃ§Ã£o invÃ¡lida, tente novamente \n");
 					break;
 				}
 			}
@@ -135,7 +133,7 @@ public class ComicControl {
 				System.out.println("*********** Menu de Consultas ************");
 				System.out.println("------------------------------------------");
 				System.out.println("Escolha a consulta desejada: \n");
-				System.out.println("1 - Coleções Disponíveis \n");
+				System.out.println("1 - ColeÃ§Ãµes DisponÃ­veis \n");
 				System.out.println("2 - Revistas \n");
 				System.out.println("3 - Amigos(as) \n");
 				System.out.println("0 - Voltar ao Menu Anterior \n");
@@ -161,7 +159,7 @@ public class ComicControl {
 			case 0:
 				break;
 			default:
-				System.out.println("Opção inválida, tente novamente \n");
+				System.out.println("OpÃ§Ã£o invÃ¡lida, tente novamente \n");
 				break;
 			}
 			}
@@ -171,7 +169,7 @@ public class ComicControl {
 			System.out.println("\n \n Obrigado Por Utilizar o Comics Control '_' ! ");
 			break;
 		default:
-			System.out.println("Opção inválida, tente novamente \n");
+			System.out.println("OpÃ§Ã£o invÃ¡lida, tente novamente \n");
 			break;
 			}
 		} teclado.close();

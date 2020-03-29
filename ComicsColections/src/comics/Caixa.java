@@ -31,16 +31,16 @@ public class Caixa {
 	
 	@Override
 	public String toString() {
-		return ("Caixa número: " + numeroCaixa + "\n Etiqueta de Identificação: " + this.getIdentificacaoEtiqueta() + "\n Cor: " + this.getCor());			
+		return ("Caixa nÃºmero: " + numeroCaixa + "\n Etiqueta de IdentificaÃ§Ã£o: " + this.getIdentificacaoEtiqueta() + "\n Cor: " + this.getCor());			
 	}
 		
 	public void cadastraCaixa(Caixa box) throws ParseException {
 		box = new Caixa();
 		numeroCaixa ++;
 		Scanner teclado = new Scanner(System.in);
-		System.out.println("Caixa número: " + numeroCaixa);
+		System.out.println("Caixa nÃºmero: " + numeroCaixa);
 		box.setNumeroCaixa(numeroCaixa);
-		System.out.println("Informe a etiqueta de Identificação:");
+		System.out.println("Informe a etiqueta de IdentificaÃ§Ã£o:");
 		box.setIdentificacaoEtiqueta(teclado.nextLine());
 		System.out.println("Informe a cor da caixa:");
 		box.setCor(teclado.nextLine());
@@ -49,7 +49,7 @@ public class Caixa {
 		System.out.println("Caixa adicionada com Suceso! ");
 	}
 	public void listarCaixas() {
-		System.out.println("***** Caixas Disponíveis ***** ");
+		System.out.println("***** Caixas Disponveis ***** ");
 		System.out.println("--------------------");
 		for (Caixa imprime : caixa) {
 			System.out.println(imprime);

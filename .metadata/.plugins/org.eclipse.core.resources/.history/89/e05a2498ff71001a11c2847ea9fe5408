@@ -82,7 +82,7 @@ public class Revista {
 		
 	}
 	public void listarRevistas() {
-		System.out.println("***** Catálogo de Revistas ***** \n");
+		System.out.println("***** Cat�logo de Revistas ***** \n");
 		for (Revista imprime : revista) {
 			System.out.println(imprime);
 			System.out.println("--------------------");

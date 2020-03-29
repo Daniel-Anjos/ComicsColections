@@ -17,13 +17,13 @@ public class Emprestimo {
 	Revista revista;
 	Amigo amigo;
 	Scanner teclado = new Scanner(System.in);
+        DateTimeFormatter formataData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 	
 	public LocalDate getDataEmprestimo() {
-		dataEmprestimo = LocalDate.now();
 		return dataEmprestimo;
 	}
 	public void setDataEmprestimo(LocalDate dataEmprestimo) {
-		this.dataEmprestimo = LocalDate.now();
+		this.dataEmprestimo = dataEmprestimo;
 	}
 	public LocalDate getDataDevolucao() {
 		return dataDevolucao;
@@ -47,7 +47,7 @@ public class Emprestimo {
 		return statusDevolvido;
 	}
 	public void setStatusDevolvido(boolean statusDevolvido) {
-		this.statusDevolvido = false;
+		this.statusDevolvido = statusDevolvido;
 	}
 	public int getCodigoEmprestimo() {
 		return codigoEmprestimo;
@@ -59,20 +59,22 @@ public class Emprestimo {
 	
 	@Override
 	public String toString() {
-		return ("CÛdigo EmprÈstimo: " + this.getCodigoEmprestimo() + "\n Amigo(a): " + this.getFriend() + "\n EdiÁ„o da Revista: " + this.getComic() +
-				"\n ColeÁ„o: " + revista.getColecao() + "\n Data de EmprÈstimo: " + this.getDataEmprestimo() + "Data de DevoluÁ„o: " + this.getDataDevolucao());
+		return ("C√≥digo Empr√©stimo: " + this.getCodigoEmprestimo() + "\n Amigo(a): " + this.getFriend().getNome() + "\n Edi√ß√£o da Revista: " + this.getComic().getNumeroEdicao() +
+				"\n Cole√ß√£o: " + this.getComic().getColecao().getNome() + "\n Data de Empr√©stimo: " + this.getDataEmprestimo().format(formataData) + "\n Data de Devolu√ß√£o: " + this.getDataDevolucao().format(formataData));
 	}
 	
 	public void novoEmprestimo(Emprestimo loan, Revista revista, Amigo amigo) throws ParseException {
 		loan = new Emprestimo();
-		setCodigoEmprestimo(codigoEmprestimo ++);
+                loan.setDataEmprestimo(LocalDate.now());
+		codigoEmprestimo ++;
+                System.out.println("Empr√©stimo n√∫mero: "+ codigoEmprestimo);
 		amigo.imprimeAmigosCadastrados();
-		System.out.println("Selecione Amigo(a) para o emprÈstimo");
+		System.out.println("Informe o nome do(a) Amigo(a) para o empr√©stimo");
 		String amigoEmprestimo = teclado.nextLine();
 				for (int i = 0; i < amigo.friend.size(); i++) {
 					if(amigo.friend.get(i).getNome().equals(amigoEmprestimo)) {
 						if(amigo.friend.get(i).getEmprestimoAtivo() == true) {
-							System.out.println("Este amigo(a) j· possui EmprÈstimo ativo. Efetue a devoluÁ„o para continuar!");
+							System.out.println("Este amigo(a) j√° possui Empr√©stimo ativo. Efetue a devolu√ß√£o para continuar!");
 						}else {
 							amigo.friend.get(i).setEmprestimoAtivo(true);
 							loan.setFriend(amigo.friend.get(i));
@@ -80,60 +82,65 @@ public class Emprestimo {
 					}
 				}
 		revista.listarRevistas();
-		System.out.println("Informe o n˙mero da EdiÁ„o da Revista Desejada: ");
+		System.out.println("Informe o n√∫mero da Edi√ß√£o da Revista Desejada: ");
 		System.out.println("\n");
 		int edicaoRevista = (teclado.nextInt());
 			    for (int i = 0; i < revista.revista.size(); i++) {
 					if(revista.revista.get(i).getNumeroEdicao() == edicaoRevista) {
 						if (revista.revista.get(i).getEmprestada() == true ) {
-							System.out.println("Revista indisponÌvel para emprÈstimo! ");
+							System.out.println("Revista indispon√≠vel para empr√©stimo! ");
 						}else {
 							revista.revista.get(i).setEmprestada(true);
 							loan.setComic(revista.revista.get(i));
 						}
 					}
 			    }
-		System.out.println("EmprÈstimo de Quantos dias? ");
+		System.out.println("Empr√©stimo de Quantos dias? ");
 		int diasDevolucao = teclado.nextInt();
-		loan.setDataDevolucao(getDataEmprestimo().plusDays(diasDevolucao));
-		DateTimeFormatter formataData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		loan.setDataDevolucao(loan.getDataEmprestimo().plusDays(diasDevolucao));
 		System.out.println("Data Emprestimo: " + loan.getDataEmprestimo().format(formataData));
-		System.out.println("Data de DevoluÁ„o: " + loan.getDataDevolucao().format(formataData));
-		System.out.println("\n");
+		System.out.println("Data de Devolu√ß√£o: " + loan.getDataDevolucao().format(formataData));
+		loan.setStatusDevolvido(false);
+                loan.setCodigoEmprestimo(codigoEmprestimo);
 		emprestimo.add(loan);
-		System.out.println("EmprÈstimo realizado com Suceso! \n");
+		System.out.println("Empr√©stimo realizado com Suceso! \n");
 	}
 	
 	public void emprestimosAtivos() {
 		System.out.println("\n");
-		System.out.println("***** Emprestimos ativos ***** ");
+		System.out.println("***** Empr√©stimos ativos ***** ");    
+                System.out.println(" ");
 		for (Emprestimo imprime : emprestimo) {
 			if (imprime.getStatusDevolvido() == false) {
 				System.out.println(imprime);
+                                System.out.println("------------------");
 			}
 		}
-		System.out.println("\n");
 	}
 	
 	public void emprestimosDevolvidos() {
 		System.out.println("\n");
 		System.out.println("***** Emprestimos Devolvidos ***** ");
-		for (Emprestimo imprime : emprestimo) {
+                 System.out.println(" ");
+                for (Emprestimo imprime : emprestimo) {
 			if (imprime.getStatusDevolvido() == true) {
-			System.out.println(imprime);
+				System.out.println(imprime);
+                                System.out.println("------------------");
+                        }
 		}
-		}
-		System.out.println("\n");
 	}
 	
 	public void devolucaoEmprestimo(Amigo amigo, Revista revista, Emprestimo loan) {
-		System.out.println("Informe o cÛdigo do emprÈstimo para DevoluÁ„o");
+                System.out.println("***** Menu Devolu√ß√µes *******");
+                this.emprestimosAtivos();
+		System.out.println("Informe o c√≥digo do empr√©stimo para Devolu√ß√£o");
 		int codigoEmprestimo = teclado.nextInt();
 		for (int i = 0; i < loan.emprestimo.size(); i++) {
 			if (loan.emprestimo.get(i).getCodigoEmprestimo() == codigoEmprestimo) {
 				if (loan.emprestimo.get(i).getStatusDevolvido() == true) {
-					System.out.println("Este emprÈstimo j· foi finalizado!");
+					System.out.println("Este empr√©stimo j√° foi finalizado!");
 				}else {
+                                        loan.emprestimo.get(i).setStatusDevolvido(true);
 					String amigoEmprestimo = loan.emprestimo.get(i).getFriend().getNome();
 					for (int x = 0; x < amigo.friend.size(); x++) {
 						if(amigo.friend.get(x).getNome().equals(amigoEmprestimo)) {
@@ -146,14 +153,21 @@ public class Emprestimo {
 								revista.revista.get(y).setEmprestada(false);
 							}
 						}
+                                    System.out.println("Status devolvido? "+ loan.emprestimo.get(i).getStatusDevolvido());
+                                    System.out.println("****  Devolu√ß√£o realizada com Sucesso!  ******");
 				}				
-				loan.emprestimo.get(i).setStatusDevolvido(false);
+				
 			}
 					
-		}
+		} clearBuffer(teclado);
 	}
 			
-	
+	private void clearBuffer(Scanner teclado) {
+		if (teclado.hasNextLine()) {
+			teclado.nextLine();
+		}
+		
+	}
 }
 	
 	
